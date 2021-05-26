@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -16,12 +17,34 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class CardDeliveryTest {
 
-
     @BeforeAll
     static void setUpAll() {
         Configuration.headless = true;
     }
 
+    @Test
+    void validFiledNewVersion() {
+        open("http://localhost:9999");
+        $("[placeholder='Город']").setValue("Ка");
+        $$(".input__menu span").findBy(text("Калуга")).click();
+        LocalDate date = LocalDate.now();
+        date = date.plusDays(7);
+        Locale l = Locale.forLanguageTag("ru");
+        int day = date.getDayOfMonth();
+        String dayString = String.valueOf(day);
+        String monthYear = date.format(DateTimeFormatter.ofPattern("LLL yyyy", l));
+        $(".icon_name_calendar").click();
+        while (!($(".calendar__name").getText().equalsIgnoreCase(monthYear))) {
+            $("[data-step='1']").click();
+        }
+        $$(".calendar__day").findBy(text(dayString)).click();
+        $("[data-test-id='name'] input").setValue("Петров Иван");
+        $("[name='phone']").setValue("+79115556644");
+        $("[data-test-id='agreement']").click();
+        $(byText("Забронировать")).click();
+        $("[data-test-id='notification']").shouldBe(visible, Duration.ofSeconds(15));
+
+    }
 
     @Test
     void validFiled() {
