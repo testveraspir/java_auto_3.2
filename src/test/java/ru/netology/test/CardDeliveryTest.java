@@ -1,5 +1,6 @@
 package ru.netology.test;
 
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
@@ -18,6 +19,7 @@ public class CardDeliveryTest {
 
     @BeforeAll
     static void setUpAll() {
+        Configuration.headless = true;
         System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
 
     }
@@ -25,6 +27,7 @@ public class CardDeliveryTest {
 
     @Test
     void validFiled() {
+        Configuration.headless = true;
         open("http://localhost:9999");
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
