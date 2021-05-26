@@ -38,7 +38,7 @@ public class CardDeliveryTest {
             $("[data-step='1']").click();
         }
         $$(".calendar__day").findBy(text(dayString)).click();
-        $("[data-test-id='name'] input").setValue("Петров Иван Ivan");
+        $("[data-test-id='name'] input").setValue("Петров Иван");
         $("[name='phone']").setValue("+79115556644");
         $("[data-test-id='agreement']").click();
         $(byText("Забронировать")).click();
