@@ -34,7 +34,7 @@ public class CardDeliveryTest {
         String inputDate = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         $("[type='tel']").setValue(inputDate);
         $("[data-test-id='name'] input").setValue("Петров Иван");
-        $("[name='phone']").setValue("79115556644");
+        $("[name='phone']").setValue("+79115556644");
         $("[data-test-id='agreement']").click();
         $(byText("Забронировать")).click();
         $("[data-test-id='notification']").shouldBe(visible, Duration.ofSeconds(15));
