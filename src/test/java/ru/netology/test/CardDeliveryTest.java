@@ -20,7 +20,6 @@ public class CardDeliveryTest {
     @BeforeAll
     static void setUpAll() {
         Configuration.headless = true;
-        System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
 
     }
 
