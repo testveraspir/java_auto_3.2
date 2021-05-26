@@ -20,13 +20,11 @@ public class CardDeliveryTest {
     @BeforeAll
     static void setUpAll() {
         Configuration.headless = true;
-
     }
 
 
     @Test
     void validFiled() {
-        Configuration.headless = true;
         open("http://localhost:9999");
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
