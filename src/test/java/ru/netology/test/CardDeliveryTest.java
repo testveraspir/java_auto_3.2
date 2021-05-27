@@ -1,7 +1,6 @@
 package ru.netology.test;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
@@ -17,14 +16,13 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class CardDeliveryTest {
 
-    /**@BeforeAll
-    static void setUpAll() {
-        Configuration.headless = true;
-    }*/
+    @BeforeEach
+    void setUpAll() {
+        open("http://localhost:9999");
+    }
 
     @Test
     void validFiledNewVersion() {
-        open("http://localhost:9999");
         $("[placeholder='Город']").setValue("Ка");
         $$(".input__menu span").findBy(text("Калуга")).click();
         LocalDate date = LocalDate.now();
@@ -48,7 +46,6 @@ public class CardDeliveryTest {
 
     @Test
     void validFiled() {
-        open("http://localhost:9999");
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
@@ -66,7 +63,6 @@ public class CardDeliveryTest {
 
     @Test
     void invalidFiledCity() {
-        open("http://localhost:9999");
         $("[placeholder='Город']").setValue("США");
         $(byText("Забронировать")).click();
         $("[data-test-id='city']").shouldBe(exactText("Доставка в выбранный город недоступна"));
@@ -74,14 +70,12 @@ public class CardDeliveryTest {
 
     @Test
     void emptyFiledCity() {
-        open("http://localhost:9999");
         $(byText("Забронировать")).click();
         $("[data-test-id='city']").shouldBe(exactText("Поле обязательно для заполнения"));
     }
 
     @Test
     void invalidFileDate() {
-        open("http://localhost:9999");
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
@@ -95,7 +89,6 @@ public class CardDeliveryTest {
 
     @Test
     void invalidFiledName() {
-        open("http://localhost:9999");
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
@@ -111,7 +104,6 @@ public class CardDeliveryTest {
 
     @Test
     void emptyFiledName() {
-        open("http://localhost:9999");
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
@@ -126,7 +118,6 @@ public class CardDeliveryTest {
 
     @Test
     void invalidFiledNumber() {
-        open("http://localhost:9999");
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
@@ -143,7 +134,6 @@ public class CardDeliveryTest {
 
     @Test
     void emptyFiledNumber() {
-        open("http://localhost:9999");
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
@@ -159,7 +149,6 @@ public class CardDeliveryTest {
 
     @Test
     void invalidCheckbox() {
-        open("http://localhost:9999");
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
