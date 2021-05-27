@@ -21,6 +21,13 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
     }
 
+    public String changedDate(int numberDays) {
+        LocalDate date = LocalDate.now();
+        date = date.plusDays(numberDays);
+        String inputDate = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        return inputDate;
+    }
+
     @Test
     void validFiledNewVersion() {
         $("[placeholder='Город']").setValue("Ка");
@@ -49,10 +56,7 @@ public class CardDeliveryTest {
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
-        LocalDate date = LocalDate.now();
-        date = date.plusDays(3);
-        String inputDate = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        $("[type='tel']").setValue(inputDate);
+        $("[type='tel']").setValue(changedDate(3));
         $("[data-test-id='name'] input").setValue("Петров Иван");
         $("[name='phone']").setValue("+79115556644");
         $("[data-test-id='agreement']").click();
@@ -79,10 +83,7 @@ public class CardDeliveryTest {
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
-        LocalDate date = LocalDate.now();
-        date = date.plusDays(2);
-        String inputDate = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        $("[type='tel']").setValue(inputDate);
+        $("[type='tel']").setValue(changedDate(2));
         $(byText("Забронировать")).click();
         $(".calendar-input__custom-control ").shouldBe(exactText("Заказ на выбранную дату невозможен"));
     }
@@ -92,10 +93,7 @@ public class CardDeliveryTest {
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
-        LocalDate date = LocalDate.now();
-        date = date.plusDays(3);
-        String inputDate = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        $("[type='tel']").setValue(inputDate);
+        $("[type='tel']").setValue(changedDate(3));
         $("[data-test-id='name'] input").setValue("Petrov Ivan");
         $(byText("Забронировать")).click();
         $("[data-test-id='name']").shouldBe(text("Имя и Фамилия указаные неверно."));
@@ -107,10 +105,7 @@ public class CardDeliveryTest {
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
-        LocalDate date = LocalDate.now();
-        date = date.plusDays(3);
-        String inputDate = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        $("[type='tel']").setValue(inputDate);
+        $("[type='tel']").setValue(changedDate(3));
         $(byText("Забронировать")).click();
         $("[data-test-id='name'] .input__sub").shouldBe(exactText("Поле обязательно для заполнения"));
 
@@ -121,10 +116,7 @@ public class CardDeliveryTest {
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
-        LocalDate date = LocalDate.now();
-        date = date.plusDays(3);
-        String inputDate = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        $("[type='tel']").setValue(inputDate);
+        $("[type='tel']").setValue(changedDate(3));
         $("[data-test-id='name'] input").setValue("Петров Иван");
         $("[name='phone']").setValue("+791155566444");
         $(byText("Забронировать")).click();
@@ -137,10 +129,7 @@ public class CardDeliveryTest {
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
-        LocalDate date = LocalDate.now();
-        date = date.plusDays(3);
-        String inputDate = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        $("[type='tel']").setValue(inputDate);
+        $("[type='tel']").setValue(changedDate(3));
         $("[data-test-id='name'] input").setValue("Петров Иван");
         $(byText("Забронировать")).click();
         $("[data-test-id='phone']").shouldBe(text("Поле обязательно для заполнения"));
@@ -152,10 +141,7 @@ public class CardDeliveryTest {
         $("[placeholder='Город']").setValue("Казань");
         $("[type='tel']").sendKeys(Keys.CONTROL, "a");
         $("[type='tel']").sendKeys(Keys.DELETE);
-        LocalDate date = LocalDate.now();
-        date = date.plusDays(3);
-        String inputDate = date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        $("[type='tel']").setValue(inputDate);
+        $("[type='tel']").setValue(changedDate(3));
         $("[data-test-id='name'] input").setValue("Петров Иван");
         $("[name='phone']").setValue("+79115556644");
         $(byText("Забронировать")).click();
