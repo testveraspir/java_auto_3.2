@@ -49,7 +49,7 @@ public class CardDeliveryTest {
         $(byText("Забронировать")).click();
         $("[data-test-id='notification']").shouldBe(visible, Duration.ofSeconds(15));
         $(".notification__content").shouldBe(text("Встреча успешно забронирована на "), Duration.ofSeconds(15));
-        $(".notification__content").shouldBe(text(changedDate(8)), Duration.ofSeconds(15));
+        $(".notification__content").shouldBe(text(changedDate(7)), Duration.ofSeconds(15));
     }
 
     @Test
@@ -64,7 +64,7 @@ public class CardDeliveryTest {
         $(byText("Забронировать")).click();
         $("[data-test-id='notification']").shouldBe(visible, Duration.ofSeconds(15));
         $(".notification__content").shouldBe(text("Встреча успешно забронирована на "), Duration.ofSeconds(15));
-        $(".notification__content").shouldBe(text(changedDate(4)), Duration.ofSeconds(15));
+        $(".notification__content").shouldBe(text(changedDate(3)), Duration.ofSeconds(15));
     }
 
     @Test
