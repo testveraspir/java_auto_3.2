@@ -17,10 +17,10 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class CardDeliveryTest {
 
-    @BeforeAll
+    /**@BeforeAll
     static void setUpAll() {
         Configuration.headless = true;
-    }
+    }*/
 
     @Test
     void validFiledNewVersion() {
